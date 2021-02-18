@@ -1,0 +1,107 @@
+﻿@model ServiceCall
+@{ 
+    var dataList = Model.Results.Results;
+}
+<div class="col-md-4">
+    <div class="card card-success">
+        <div class="card-header">
+            <h3 class="card-title">Olumlu</h3>
+        </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Kod</th>
+                            <th>Açıklama</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (dataList.Count > 0)
+                        {
+                            foreach (var item in dataList.Where(x=>x.Status.Value == (int)StatusValue.Success))
+                            {
+                                <tr>
+                                    <td>@item.Code</td>
+                                    <td>@item.Description</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                Bilgi Bulunamadı
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card card-info">
+        <div class="card-header">
+            <h3 class="card-title">Bilgi</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Kod</th>
+                        <th>Açıklama</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (dataList.Count > 0)
+                    {
+                        foreach (var item in dataList.Where(x => x.Status.Value == (int)StatusValue.Information))
+                        {
+                            <tr>
+                                <td>@item.Code</td>
+                                <td>@item.Description</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>Bilgi Bulunamadı</tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card card-danger">
+        <div class="card-header">
+            <h3 class="card-title">Olumsuz</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Kod</th>
+                        <th>Açıklama</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (dataList.Count > 0)
+                    {
+                        foreach (var item in dataList.Where(x => x.Status.Value == (int)StatusValue.Rejected))
+                        {
+                            <tr>
+                                <td>@item.Code</td>
+                                <td>@item.Description</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            Bilgi Bulunamadı
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

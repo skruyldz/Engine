@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SompoEngine.Common\SompoEngine.Common.csproj" />
+    <ProjectReference Include="..\SompoEngine.DataAccess\SompoEngine.DataAccess.csproj" />
+    <ProjectReference Include="..\SompoEngine.Entites\SompoEngine.Entites.csproj" />
+    <ProjectReference Include="..\SompoEngine.Models\SompoEngine.Models.csproj" />
+  </ItemGroup>
+
+</Project>

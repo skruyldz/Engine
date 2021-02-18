@@ -1,0 +1,60 @@
+﻿@model ServiceCall
+@{
+    ViewData["Title"] = "ServiceCall";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Servis Çağrımı</h3>
+            </div>
+            <form id="serviceCall">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="@Model.ProposalNo">Teklif No</label>
+                        <input type="text" class="form-control" asp-for="@Model.ProposalNo" placeholder="Teklif No" value="200200022183057">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.RenewalNo">Yenileme No</label>
+                        <input type="text" class="form-control" asp-for="@Model.RenewalNo" placeholder="Yenileme No" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.EndorsNo">Zeyil No</label>
+                        <input type="text" class="form-control" asp-for="@Model.EndorsNo" placeholder="Zeyil No" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.ProductNo">Ürün No</label>
+                        <input type="text" class="form-control" asp-for="@Model.ProductNo" placeholder="Ürün No" value="112">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-primary" onclick="serviceCall()" >Gönder</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row" id="resultsDiv">
+    
+</div>
+
+<script type="text/javascript">
+    function serviceCall() { 
+        $.ajax({
+            url: "@Url.Action("Send",ControllerName)",
+            type: "POST",
+            data: $('#serviceCall').serialize(),
+            success: function (response) {
+                if (typeof response === "string") {
+                    var k = $(response);
+                    $('#resultsDiv').html(k);
+                }
+            },
+            error: function (xhr, httpStatusMessage, customErrorMessage) {
+
+            }
+            });
+        };
+
+</script>
+
